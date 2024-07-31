@@ -1,0 +1,45 @@
+body{
+  background: rgb(99, 99, 212);
+  font: normal 2.5vh Roboto; 
+}
+#buttons {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  gap: 1vh;
+  width: 30vh;
+}
+
+button{
+  cursor: pointer;
+  border: .1vh solid black;
+  border-radius: 1vh;
+}
+
+header{
+  color: white;
+  text-align: center;
+}
+img {
+  border-radius: 50%;
+  width: 15vh;
+  height: 15vh;
+}
+section{
+  background: white;
+  border-radius: 2vh;
+  padding: .4vh;
+  width: 80vh;
+  margin: auto;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.432);
+
+}
+div{
+  text-align: center;
+  padding: 10px;
+}
+footer{
+  text-align: center;
+  color: white;
+  font-style: italic;
+}
