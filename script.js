@@ -1,16 +1,20 @@
-let livros = '{ "livros" : [' +
-  '{ "nome":" Querido John" , "autor":"Doe" },' +
-  '{ "nome":"A cabana" , "autor":"Smith" },' +
-  '{ "nome":"Peter Pan" , "autor":"Jones" } ]}';
+let obj = {
+  "livros": [
+    { "nome": "Querido John", "autor": "Nicholas Sparks", "ano": 2006 },
+    { "nome": "A Cabana", "autor": "William P. Young", "ano": 2007 },
+    { "nome": "Peter Pan", "autor": "J.M. Barrie", "ano": 1911 }
+  ]
+};
+
 
 const res = window.document.getElementById("res")
-let obj = JSON.parse(livros);
+
 
 const listar = ()=>{
   res.innerHTML = ""
   for (let i = 0; i < obj.livros.length; i++){
-    res.innerHTML +="Nome:"+ obj.livros[i].nome + "-- " +"Autor:"+ " "+ obj.livros[i].autor + "<br>";
-  }
+    res.innerHTML += `Nome: ${obj.livros[i].nome} - Autor: ${obj.livros[i].autor} - Ano: ${obj.livros[i].ano}<p>`
+}
 }
 const buscar = ()=>{
   console.log("Test")
@@ -26,26 +30,23 @@ const buscar = ()=>{
   let button = window.document.createElement("button")
   button.textContent = "Buscar"
   button.id = "buttonBuscar"
+  let achado = false
   button.addEventListener("click", function(){
     console.log("entrou")
     let textBuscar = document.getElementById("input").value.toLowerCase()
-    
-    for (let i = 0; i <  obj.livros;i++){
-      if (obj.livros[i].nome === searchF) {
-        searchResult = obj.employees[i].nome + " " + obj.livros[i].lastName;
-        break;
+    let achado = false
+    for (let i=0; i< obj.livros.length; i++){
+      if (obj.livros[i].nome.toLowerCase().includes(textBuscar)) {
+        res.innerHTML += `<br>Titulo: ${obj.livros[i].nome} - Autor = ${obj.livros[i].autor} - Ano: ${obj.livros[i].ano}`
+        achado = true
+        break
       }
-    }
-    
-    if (livroEncontrado) {
-      res.innerHTML += `<br>Nome: ${livroEncontrado.nome} <br> Autor: ${livroEncontrado.autor}`;
-    }else if(textBuscar == ""){
-      res.innerHTML += "<p>Digite o nome do livro</p>"
-    }
-    else {
-      res.innerHTML += "Livro não encontrado.";
-    }
+           
+    }if(!achado){
+        console.log('Nenhum livro encontrado')
+        res.innerHTML += 'Nenhum livro encontrado'
+      }
+
   })
-  
   res.appendChild(button) 
 }
