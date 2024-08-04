@@ -17,7 +17,7 @@ const listar = ()=>{
 }
 }
 const buscar = ()=>{
-  console.log("Test")
+  
   res.innerHTML = ""
   //Entrada de texto
   let input = window.document.createElement("input")
@@ -32,7 +32,6 @@ const buscar = ()=>{
   button.id = "buttonBuscar"
   let achado = false
   button.addEventListener("click", function(){
-    console.log("entrou")
     let textBuscar = document.getElementById("input").value.toLowerCase()
     let achado = false
     for (let i=0; i< obj.livros.length; i++){
@@ -43,7 +42,6 @@ const buscar = ()=>{
       }
            
     }if(!achado){
-        console.log('Nenhum livro encontrado')
         res.innerHTML += 'Nenhum livro encontrado'
       }
 
