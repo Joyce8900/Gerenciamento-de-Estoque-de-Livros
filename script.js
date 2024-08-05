@@ -4,11 +4,8 @@ let obj = {
     { "nome": "A Cabana", "autor": "William P. Young", "ano": 2007 },
     { "nome": "Peter Pan", "autor": "J.M. Barrie", "ano": 1911 }
   ]
-};
-
-
+}
 const res = window.document.getElementById("res")
-
 
 const listar = ()=>{
   res.innerHTML = ""
@@ -47,4 +44,57 @@ const buscar = ()=>{
 
   })
   res.appendChild(button) 
+}
+
+const adicionar = ()=>{
+  res.innerHTML = ''
+  //elemento pNome
+  let pNome = window.document.createElement('p')
+  pNome.textContent = 'Digite o nome do livro'
+  res.appendChild(pNome)
+  //input nome
+  let inputNome = window.document.createElement("input")
+  inputNome.id = "inputNome"
+  inputNome.type = "text"
+  inputNome.placeholder = "Nome"
+  res.appendChild(inputNome)
+
+  // elemento pAutor
+  let pAutor = window.document.createElement('p')
+  pAutor.textContent = 'Digite o autor do livro'
+  res.appendChild(pAutor)
+  
+  let inputAutor = window.document.createElement("input")
+  inputAutor.id = "inputAutor"
+  inputAutor.type = "text"
+  inputAutor.placeholder = "Autor"
+  res.appendChild(inputAutor)
+
+  // elemento pAutor
+  let pAno = window.document.createElement('p')
+  pAno.textContent = 'Digite o ano de lançamento'
+  res.appendChild(pAno)
+
+  let inputAno = window.document.createElement("input")
+  inputAno.id = "inputAno"
+  inputAno.type = "number"
+  inputAno.placeholder = "Ano"
+  res.appendChild(inputAno)
+
+  let button = window.document.createElement('button')
+  button.textContent = 'Adicionar'
+  res.appendChild(button)
+
+  button.addEventListener('click', function (){
+    let nome = window.document.getElementById('inputNome').value
+    let autor = window.document.getElementById('inputAutor').value
+    let ano = window.document.getElementById('inputAno').value
+    obj.livros.push(
+      { "nome": `${nome}`, "autor": `${autor}`, "ano": `${ano}` }
+    );
+    
+    listar()
+  })
+
+
 }
