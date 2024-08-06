@@ -110,3 +110,42 @@ const adicionar = ()=>{
 
 
 }
+
+const excluir =()=>{
+  res.innerHTML = ''
+  //p
+  let p = window.document.createElement('p')
+  p.textContent = 'Nome do livro que desejar excluir:'
+  res.appendChild(p)
+
+  //Input
+  let input = window.document.createElement('input')
+  input.id = 'inputId'
+  res.appendChild(input)
+
+  //Button
+  let button = window.document.createElement('button')
+  button.id = 'buttonId'
+  res.appendChild(button)
+  button.textContent = 'Excluir'
+
+  button.addEventListener('click', function(){
+    let inputExcluir = String(input.value)
+    if(inputExcluir){
+        const index = obj.livros.findIndex(livro => livro.nome.toLowerCase() === inputExcluir.toLowerCase());
+        if (index > -1) {
+          obj.livros.splice(index, 1);
+          console.log(obj.livros)
+          listar()
+        }else{
+          res.innerHTML += 'Este livro não existe'
+        }
+        
+      }
+      else{
+        res.innerHTML += 'Insira o nome do livro'
+      }
+        
+    
+  })
+}
