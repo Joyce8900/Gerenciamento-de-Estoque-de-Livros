@@ -98,7 +98,7 @@ const adicionar = ()=>{
       { "nome": `${nome}`, "autor": `${autor}`, "ano": `${ano}` })
       listar()
       } else {
-        res.innerHTML += 'O livro já existe na lista.'
+        res.innerHTML += '<br>O livro já existe na lista.'
       }
     }else{
       res.innerHTML += '<br>Preencha todos os campos'
@@ -138,12 +138,11 @@ const excluir =()=>{
           console.log(obj.livros)
           listar()
         }else{
-          res.innerHTML += 'Este livro não existe'
+          res.innerHTML += '<br>Este livro não existe'
         }
-        
       }
       else{
-        res.innerHTML += 'Insira o nome do livro'
+        res.innerHTML += '<br>Insira o nome do livro'
       }
         
     
