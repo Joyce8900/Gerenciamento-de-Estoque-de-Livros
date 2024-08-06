@@ -5,6 +5,9 @@ let obj = {
     { "nome": "Peter Pan", "autor": "J.M. Barrie", "ano": 1911 }
   ]
 }
+const livroExiste = (nome) =>{
+  return obj.livros.some(livro => livro.nome.toLowerCase() === nome.toLowerCase());
+}
 const res = window.document.getElementById("res")
 
 const listar = ()=>{
@@ -89,11 +92,20 @@ const adicionar = ()=>{
     let nome = window.document.getElementById('inputNome').value
     let autor = window.document.getElementById('inputAutor').value
     let ano = window.document.getElementById('inputAno').value
-    obj.livros.push(
-      { "nome": `${nome}`, "autor": `${autor}`, "ano": `${ano}` }
-    );
+    if (nome && autor && ano) {
+      if (!livroExiste(nome)) {
+        obj.livros.push(
+      { "nome": `${nome}`, "autor": `${autor}`, "ano": `${ano}` })
+      listar()
+      } else {
+        res.innerHTML += '<br>O livro já existe na lista.';
+      }
+    }else{
+      res.innerHTML += 'Preencha todos os campos'
+    }
     
-    listar()
+    
+    
   })
 
 
