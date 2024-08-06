@@ -98,10 +98,10 @@ const adicionar = ()=>{
       { "nome": `${nome}`, "autor": `${autor}`, "ano": `${ano}` })
       listar()
       } else {
-        res.innerHTML += '<br>O livro já existe na lista.';
+        res.innerHTML += 'O livro já existe na lista.'
       }
     }else{
-      res.innerHTML += 'Preencha todos os campos'
+      res.innerHTML += '<br>Preencha todos os campos'
     }
     
     
