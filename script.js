@@ -13,7 +13,7 @@ const res = window.document.getElementById("res")
 const listar = ()=>{
   res.innerHTML = ""
   for (let i = 0; i < obj.livros.length; i++){
-    res.innerHTML += `Nome: ${obj.livros[i].nome} - Autor: ${obj.livros[i].autor} - Ano: ${obj.livros[i].ano}<p>`
+    res.innerHTML += `id: ${i+1} - Nome: ${obj.livros[i].nome} - Autor: ${obj.livros[i].autor} - Ano: ${obj.livros[i].ano}<p>`
 }
 }
 const buscar = ()=>{
@@ -36,7 +36,7 @@ const buscar = ()=>{
     let achado = false
     for (let i=0; i< obj.livros.length; i++){
       if (obj.livros[i].nome.toLowerCase().includes(textBuscar)) {
-        res.innerHTML += `<br>Titulo: ${obj.livros[i].nome} - Autor = ${obj.livros[i].autor} - Ano: ${obj.livros[i].ano}`
+        res.innerHTML += `<br>Titulo: ${obj.livros[i].nome} - Autor: ${obj.livros[i].autor} - Ano: ${obj.livros[i].ano}`
         achado = true
         break
       }
@@ -143,8 +143,56 @@ const excluir =()=>{
       }
       else{
         res.innerHTML += '<br>Insira o nome do livro'
-      }
-        
-    
+      }   
   })
+}
+const renomear = ()=>{
+  res.innerHTML = ""
+  listar()
+  //input id
+  res.innerHTML += `<p>Qual o id do livro que você deseja renomear:</p>`
+  let inputTxtId = window.document.createElement ("input")
+  inputTxtId.id = "id"
+  res.appendChild(inputTxtId)
+
+  
+  //button
+  let buttomId = document.createElement("button")
+  buttomId.textContent = "Avança"
+  res.appendChild(buttomId)
+
+  buttomId.addEventListener("click" ,function (){
+    let inputId = document.getElementById("id").value
+    let index = inputId -1
+    if (inputId >= 0 && inputId < obj.livros.length+1){
+      res.innerHTML = ""
+      
+      res.innerHTML += `${obj.livros[index].nome} - ${obj.livros[index].autor} - ${obj.livros[index].ano}`
+      res.innerHTML += `<p>Nome</p>`
+      let inputTxtNome = window.document.createElement("input")
+      inputTxtNome.id = "nome"
+      inputTxtNome.placeholder = "Nome do livro"
+      res.appendChild(inputTxtNome)
+
+      res.innerHTML += `<p>Autor</p>`
+      let inputTxtAutor = window.document.createElement("input")
+      inputTxtAutor.id = "autor"
+      res.appendChild(inputTxtAutor)
+
+      res.innerHTML += `<p>Ano do lançamento</p>`
+      let inputTxtAno = window.document.createElement("input")
+      inputTxtAno.id = "ano"
+      res.appendChild(inputTxtAno)
+
+      let buttom = window.document.createElement("button")
+      buttom.textContent = "Renomear"
+      res.appendChild(buttom)
+        
+      }else{
+        console.log("id invalido")
+      }
+  })
+  
+
+ 
 }
