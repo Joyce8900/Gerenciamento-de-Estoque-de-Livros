@@ -1,13 +1,11 @@
-let obj = JSON.parse(localStorage.getItem("salvo")) || {
+let obj = {
   "livros": [
     { "nome": "Querido John", "autor": "Nicholas Sparks", "ano": 2006},
     { "nome": "A Cabana", "autor": "William P. Young", "ano": 2007 },
     { "nome": "Peter Pan", "autor": "J.M. Barrie", "ano": 1911 }
   ]
 }
-function salvar(obj) {
-  localStorage.setItem("salvo", JSON.stringify(obj))
-}
+
 const livroExiste = (nome) =>{
   return obj.livros.some(livro => livro.nome.toLowerCase() === nome.toLowerCase());
 }
@@ -100,7 +98,7 @@ const adicionar = ()=>{
         obj.livros.push(
       { "nome": `${nome}`, "autor": `${autor}`, "ano": `${ano}` })
         listar()
-        salvar(obj)
+        
       } else {
         res.innerHTML += '<br>O livro já existe na lista.'
       }
@@ -136,7 +134,7 @@ const excluir =()=>{
           obj.livros.splice(index, 1);
           console.log(obj.livros)
           listar()
-          salvar(obj)
+          
         }else{
           res.innerHTML += '<br>Este livro não existe'
         }
@@ -195,15 +193,14 @@ const renomear = ()=>{
         obj.livros[index] = { nome:nome , autor: autor, ano:ano };
         console.log(obj.livros[index])
         listar()
-        salvar(obj)
+        
       })
         
       }else{
-        console.log("id invalido")
+        res.innerHTML = "id invalido"
       }
   })
   
 
  
 }
-document.addEventListener("DOMContentLoaded", listar)
