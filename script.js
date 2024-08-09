@@ -5,6 +5,7 @@ let obj = {
     { "nome": "Peter Pan", "autor": "J.M. Barrie", "ano": 1911 }
   ]
 }
+
 const livroExiste = (nome) =>{
   return obj.livros.some(livro => livro.nome.toLowerCase() === nome.toLowerCase());
 }
@@ -96,19 +97,15 @@ const adicionar = ()=>{
       if (!livroExiste(nome)) {
         obj.livros.push(
       { "nome": `${nome}`, "autor": `${autor}`, "ano": `${ano}` })
-      listar()
+        listar()
+        
       } else {
         res.innerHTML += '<br>O livro já existe na lista.'
       }
     }else{
       res.innerHTML += '<br>Preencha todos os campos'
-    }
-    
-    
-    
+    }    
   })
-
-
 }
 
 const excluir =()=>{
@@ -137,6 +134,7 @@ const excluir =()=>{
           obj.livros.splice(index, 1);
           console.log(obj.livros)
           listar()
+          
         }else{
           res.innerHTML += '<br>Este livro não existe'
         }
@@ -195,10 +193,11 @@ const renomear = ()=>{
         obj.livros[index] = { nome:nome , autor: autor, ano:ano };
         console.log(obj.livros[index])
         listar()
+        
       })
         
       }else{
-        console.log("id invalido")
+        res.innerHTML = "id invalido"
       }
   })
   
