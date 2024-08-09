@@ -1,9 +1,12 @@
-let obj = {
+let obj = JSON.parse(localStorage.getItem("salvo")) || {
   "livros": [
     { "nome": "Querido John", "autor": "Nicholas Sparks", "ano": 2006},
     { "nome": "A Cabana", "autor": "William P. Young", "ano": 2007 },
     { "nome": "Peter Pan", "autor": "J.M. Barrie", "ano": 1911 }
   ]
+}
+function salvar(obj) {
+  localStorage.setItem("salvo", JSON.stringify(obj))
 }
 const livroExiste = (nome) =>{
   return obj.livros.some(livro => livro.nome.toLowerCase() === nome.toLowerCase());
@@ -96,19 +99,15 @@ const adicionar = ()=>{
       if (!livroExiste(nome)) {
         obj.livros.push(
       { "nome": `${nome}`, "autor": `${autor}`, "ano": `${ano}` })
-      listar()
+        listar()
+        salvar(obj)
       } else {
         res.innerHTML += '<br>O livro já existe na lista.'
       }
     }else{
       res.innerHTML += '<br>Preencha todos os campos'
-    }
-    
-    
-    
+    }    
   })
-
-
 }
 
 const excluir =()=>{
@@ -137,6 +136,7 @@ const excluir =()=>{
           obj.livros.splice(index, 1);
           console.log(obj.livros)
           listar()
+          salvar(obj)
         }else{
           res.innerHTML += '<br>Este livro não existe'
         }
@@ -195,6 +195,7 @@ const renomear = ()=>{
         obj.livros[index] = { nome:nome , autor: autor, ano:ano };
         console.log(obj.livros[index])
         listar()
+        salvar(obj)
       })
         
       }else{
@@ -205,3 +206,4 @@ const renomear = ()=>{
 
  
 }
+document.addEventListener("DOMContentLoaded", listar)
