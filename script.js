@@ -1,6 +1,6 @@
 let obj = {
   "livros": [
-    { "nome": "Querido John", "autor": "Nicholas Sparks", "ano": 2006 },
+    { "nome": "Querido John", "autor": "Nicholas Sparks", "ano": 2006},
     { "nome": "A Cabana", "autor": "William P. Young", "ano": 2007 },
     { "nome": "Peter Pan", "autor": "J.M. Barrie", "ano": 1911 }
   ]
@@ -187,6 +187,15 @@ const renomear = ()=>{
       let buttom = window.document.createElement("button")
       buttom.textContent = "Renomear"
       res.appendChild(buttom)
+
+      buttom.addEventListener("click", ()=>{
+        let nome = document.getElementById("nome").value
+        let autor = document.getElementById("autor").value
+        let ano = document.getElementById("ano").value
+        obj.livros[index] = { nome:nome , autor: autor, ano:ano };
+        console.log(obj.livros[index])
+        listar()
+      })
         
       }else{
         console.log("id invalido")
