@@ -6,6 +6,7 @@ let obj = {
   ]
 }
 
+
 const livroExiste = (nome) =>{
   return obj.livros.some(livro => livro.nome.toLowerCase() === nome.toLowerCase());
 }
@@ -175,11 +176,13 @@ const renomear = ()=>{
       res.innerHTML += `<p>Autor</p>`
       let inputTxtAutor = window.document.createElement("input")
       inputTxtAutor.id = "autor"
+      inputTxtAutor.placeholder= "Autor"
       res.appendChild(inputTxtAutor)
 
       res.innerHTML += `<p>Ano do lançamento</p>`
       let inputTxtAno = window.document.createElement("input")
       inputTxtAno.id = "ano"
+      inputTxtAno.placeholder = "Ano"
       res.appendChild(inputTxtAno)
 
       let buttom = window.document.createElement("button")
@@ -199,8 +202,6 @@ const renomear = ()=>{
       }else{
         res.innerHTML = "id invalido"
       }
-  })
-  
-
- 
+  }) 
 }
+
