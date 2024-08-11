@@ -33,21 +33,29 @@ const buscar = ()=>{
   button.textContent = "Buscar"
   button.id = "buttonBuscar"
   let achado = false
+  
+  
   button.addEventListener("click", function(){
-    let textBuscar = document.getElementById("input").value.toLowerCase()
+    let textBuscar = document.getElementById("input").value.toLowerCase().trim()
+    res.innerHTML = ""
+    if (textBuscar.length === 0) {
+      res.innerHTML = "Por favor, digite o nome do livro.";
+      return; 
+    }
     let achado = false
-    for (let i=0; i< obj.livros.length; i++){
+    for (let i = 0; i < obj.livros.length; i++) {
       if (obj.livros[i].nome.toLowerCase().includes(textBuscar)) {
         res.innerHTML += `<br>Titulo: ${obj.livros[i].nome} - Autor: ${obj.livros[i].autor} - Ano: ${obj.livros[i].ano}`
         achado = true
         break
       }
-           
-    }if(!achado){
-        res.innerHTML += 'Nenhum livro encontrado'
-      }
 
-  })
+    } if (!achado) {
+      res.innerHTML += 'Nenhum livro encontrado'
+    }
+  }
+
+  )
   res.appendChild(button) 
 }
 
