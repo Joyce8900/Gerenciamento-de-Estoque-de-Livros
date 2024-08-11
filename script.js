@@ -145,11 +145,12 @@ const excluir =()=>{
           listar()
           
         }else{
-          res.innerHTML += '<br>Este livro não existe'
+          res.innerHTML = '<br>Este livro não existe'
         }
       }
       else{
-        res.innerHTML += '<br>Insira o nome do livro'
+        res.innerHTML = '<br>Insira o nome do livro'
+        
       }   
   })
 }
