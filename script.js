@@ -39,21 +39,28 @@ const listar = ()=>{
 const buscar = ()=>{
   
   res.innerHTML = ""
+  let pBuscar = document.createElement("p")
+  pBuscar.textContent = "Qual o nome do livro:"
+  res.appendChild(pBuscar)
   //Entrada de texto
   let input = window.document.createElement("input")
   input.id = "input"
   input.type="text"
-  input.placeholder="Digite o nome do livro"
+  input.className = "input"
+
   res.appendChild(input);
 
   //buttom
   let button = window.document.createElement("button")
   button.textContent = "Buscar"
+  button.className = "button"
   button.id = "buttonBuscar"
   let achado = false
+
   
   
   button.addEventListener("click", function(){
+    
     let textBuscar = document.getElementById("input").value.toLowerCase().trim()
     res.innerHTML = ""
     if (textBuscar.length === 0) {
@@ -87,7 +94,8 @@ const adicionar = ()=>{
   let inputNome = window.document.createElement("input")
   inputNome.id = "inputNome"
   inputNome.type = "text"
-  inputNome.placeholder = "Nome"
+  inputNome.className = "input"
+  
   res.appendChild(inputNome)
 
   // elemento pAutor
@@ -98,7 +106,8 @@ const adicionar = ()=>{
   let inputAutor = window.document.createElement("input")
   inputAutor.id = "inputAutor"
   inputAutor.type = "text"
-  inputAutor.placeholder = "Autor"
+  
+  inputAutor.className = "input"
   res.appendChild(inputAutor)
 
   // elemento pAutor
@@ -109,11 +118,13 @@ const adicionar = ()=>{
   let inputAno = window.document.createElement("input")
   inputAno.id = "inputAno"
   inputAno.type = "number"
-  inputAno.placeholder = "Ano"
+  inputAno.className = "input"
+  
   res.appendChild(inputAno)
 
   let button = window.document.createElement('button')
   button.textContent = 'Adicionar'
+  button.className = "button"
   res.appendChild(button)
 
   button.addEventListener('click', function (){
@@ -145,11 +156,13 @@ const excluir =()=>{
   //Input
   let input = window.document.createElement('input')
   input.id = 'inputId'
+  input.className = "input"
   res.appendChild(input)
 
   //Button
   let button = window.document.createElement('button')
   button.id = 'buttonId'
+  button.className = "button"
   res.appendChild(button)
   button.textContent = 'Excluir'
 
@@ -179,41 +192,47 @@ const renomear = ()=>{
   res.innerHTML += `<p>Qual o id do livro que você deseja renomear:</p>`
   let inputTxtId = window.document.createElement ("input")
   inputTxtId.id = "id"
+  inputTxtId.className = "input"
   res.appendChild(inputTxtId)
 
   
   //button
   let buttomId = document.createElement("button")
   buttomId.textContent = "Avança"
+  buttomId.className = "button"
   res.appendChild(buttomId)
 
   buttomId.addEventListener("click" ,function (){
     let inputId = document.getElementById("id").value
     let index = inputId -1
-    if (inputId >= 0 && inputId < obj.livros.length+1){
+    if (inputId >= 1  && inputId < obj.livros.length+1){
       res.innerHTML = ""
       
       res.innerHTML += `${obj.livros[index].nome} - ${obj.livros[index].autor} - ${obj.livros[index].ano}`
       res.innerHTML += `<p>Nome</p>`
       let inputTxtNome = window.document.createElement("input")
       inputTxtNome.id = "nome"
-      inputTxtNome.placeholder = "Nome do livro"
+      inputTxtNome.className = "input"
+      
       res.appendChild(inputTxtNome)
 
       res.innerHTML += `<p>Autor</p>`
       let inputTxtAutor = window.document.createElement("input")
       inputTxtAutor.id = "autor"
-      inputTxtAutor.placeholder= "Autor"
+      inputTxtAutor.className = "input"
+      
       res.appendChild(inputTxtAutor)
 
       res.innerHTML += `<p>Ano do lançamento</p>`
       let inputTxtAno = window.document.createElement("input")
       inputTxtAno.id = "ano"
-      inputTxtAno.placeholder = "Ano"
+      inputTxtAno.className = "input" 
+      
       res.appendChild(inputTxtAno)
 
       let buttom = window.document.createElement("button")
       buttom.textContent = "Renomear"
+      buttom.className = "button"
       res.appendChild(buttom)
 
       buttom.addEventListener("click", ()=>{

@@ -13,6 +13,9 @@ tbody{
   gap: 1vh;
   width: 30vh;
 }
+.button {
+  margin: 1vh;
+}
 table{
   margin: 0 auto;
 }
@@ -39,7 +42,18 @@ input#input{
 #buttonBuscar:hover{
   text-align: center;
 }
-input{
+
+input[type=number]::-webkit-inner-spin-button { 
+  -webkit-appearance: none;
+    
+}
+input[type=number] { 
+   -moz-appearance: textfield;
+   appearance: textfield;
+
+}
+
+input {
   text-decoration: none;
   border-radius: 5vh;
   border: .1vh solid gray;
@@ -47,7 +61,7 @@ input{
   margin: auto;
   gap:1vh;
   width: 30vh;
-
+ 
 }
 
 button{
