@@ -2,6 +2,10 @@ body{
   background: hwb(240 39% 17%);
   font: normal 2.5vh Roboto; 
 }
+tbody{
+  margin: 0 auto;
+  border: .1vh solid grey;
+}
 #buttons {
   display: flex;
   flex-direction: column;
@@ -9,8 +13,19 @@ body{
   gap: 1vh;
   width: 30vh;
 }
+table{
+  margin: 0 auto;
+}
+th{
+  border: .1vh solid grey;
+}
+td{
+  padding:0 2vh;
+  border: .1vh solid grey;
+}
 input#input{
   text-align: center;
+  
 }
 #buttonBuscar{
   transition: cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -39,16 +54,9 @@ button{
   cursor: pointer;
   border: .1vh solid black;
   border-radius: 1vh;
+  
 }
-/* button:hover{
-  display: grid;
-  width: 32vh;
-  background: #6363d4;
-  color: white;
-  font-size: medium;
-  transition: 1s ease;
-  text-align: center;
-} */
+
 header{
   color: white;
   text-align: center;
