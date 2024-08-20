@@ -14,9 +14,27 @@ const res = window.document.getElementById("res")
 
 const listar = ()=>{
   res.innerHTML = ""
-  for (let i = 0; i < obj.livros.length; i++){
-    res.innerHTML += `id: ${i+1} - Nome: ${obj.livros[i].nome} - Autor: ${obj.livros[i].autor} - Ano: ${obj.livros[i].ano}<p>`
-}
+  let tabela = `
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Autor</th>
+      <th>Ano</th>
+    </tr>`;
+  for (let i = 0; i < obj.livros.length; i++) {
+    tabela += `
+    <tr>
+      <td>${i + 1}</td>
+      <td>${obj.livros[i].nome}</td>
+      <td>${obj.livros[i].autor}</td>
+      <td>${obj.livros[i].ano}</td>
+    </tr>`;
+  } 
+  tabela += `
+  </table>
+  <p></p>`;
+  res.innerHTML += tabela;
 }
 const buscar = ()=>{
   
