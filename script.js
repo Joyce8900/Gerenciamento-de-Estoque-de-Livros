@@ -6,13 +6,21 @@ let obj = {
   ]
 }
 
+let storageLivros = localStorage.getItem('livros') ? localStorage.getItem('livros').split(',') : localStorage.setItem('livros', JSON.stringify(obj.livros));
+if (!localStorage.getItem('livros')) {
+  localStorage.setItem('livros', JSON.stringify(obj.livros))
+} else {
+  obj.livros = JSON.parse(localStorage.getItem('livros'));
+}
 
 const livroExiste = (nome) =>{
+  let livros = JSON.parse(localStorage.getItem('livros')) 
   return obj.livros.some(livro => livro.nome.toLowerCase() === nome.toLowerCase());
 }
 const res = window.document.getElementById("res")
 
 const listar = ()=>{
+  obj.livros = JSON.parse(localStorage.getItem('livros')) || [];
   res.innerHTML = ""
   let tabela = `
   <table>
@@ -132,9 +140,13 @@ const adicionar = ()=>{
     let autor = window.document.getElementById('inputAutor').value
     let ano = window.document.getElementById('inputAno').value
     if (nome && autor && ano) {
+      let livros = JSON.parse(localStorage.getItem('livros')) || []
       if (!livroExiste(nome)) {
         obj.livros.push(
       { "nome": `${nome}`, "autor": `${autor}`, "ano": `${ano}` })
+        
+        localStorage.setItem('livros', JSON.stringify(obj.livros));
+
         listar()
         
       } else {
@@ -173,6 +185,7 @@ const excluir =()=>{
         if (index > -1) {
           obj.livros.splice(index, 1);
           console.log(obj.livros)
+          localStorage.setItem('livros', JSON.stringify(obj.livros));
           listar()
           
         }else{
@@ -241,6 +254,7 @@ const renomear = ()=>{
         let ano = document.getElementById("ano").value
         obj.livros[index] = { nome:nome , autor: autor, ano:ano };
         console.log(obj.livros[index])
+        localStorage.setItem('livros', JSON.stringify(obj.livros));
         listar()
         
       })
